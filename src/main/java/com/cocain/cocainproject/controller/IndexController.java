@@ -1,6 +1,7 @@
 package com.cocain.cocainproject.controller;
 
 import com.cocain.cocainproject.config.auth.dto.SessionUser;
+import com.cocain.cocainproject.dto.UserSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +17,10 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model) {
         SessionUser user = (SessionUser) httpSession.getAttribute("user"); // (1)
-        if(user != null) { // (2)
-            model.addAttribute("userName", user.getName());
+
+        if(user != null) {
+            // (2)
+            model.addAttribute("userInfo", user);
         }
         return "index";
     }
@@ -33,5 +36,13 @@ public class IndexController {
     }
 
     @GetMapping("/createProject")
-    public String createProject(){return "createProject"; }
+    public String createProject(Model model){
+        SessionUser user = (SessionUser) httpSession.getAttribute("user"); // (1)
+
+        if(user != null) {
+            // (2)
+            model.addAttribute("userInfo", user);
+        }
+        return "createProject";
+    }
 }
