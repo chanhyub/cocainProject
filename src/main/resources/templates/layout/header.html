@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <!-- site metas -->
-  <title>Pluto - Responsive Bootstrap Admin Panel Templates</title>
+  <title>Cocain - Coding Career in</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -49,8 +49,15 @@
           <div class="user_profle_side">
             <div class="user_img"><img class="img-responsive" src="images/layout_img/user_img.jpg" alt="#" /></div>
             <div class="user_info">
-              <h6>John David</h6>
+              {{#userName}}
+              <h6>{{this}} 님</h6>
               <p><span class="online_animation"></span> Online</p>
+              {{/userName}}
+              {{^userName}}
+              <h6>로그인이 필요합니다.</h6>
+              <p><span class="Offline_animation"></span> OffLine</p>
+              {{/userName}}
+
             </div>
           </div>
         </div>
@@ -88,13 +95,22 @@
               <div class="icon_info">
                 <ul class="user_profile_dd">
                   <li>
-                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="name_user">John David</span></a>
+                    {{#userName}}
+                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="name_user" id="user">{{this}}</span></a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="profile.html">My Profile</a>
                       <a class="dropdown-item" href="settings.html">Settings</a>
                       <a class="dropdown-item" href="help.html">Help</a>
-                      <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                      <a class="dropdown-item" href="/logout"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                     </div>
+                    {{/userName}}
+                    {{^userName}}
+                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="name_user">로그인</span></a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/oauth2/authorization/google"><span>Google Login</span> <i class="fa fa-sign-out"></i></a>
+                      <a class="dropdown-item" href="/oauth2/authorization/naver"><span>Naver Login</span> <i class="fa fa-sign-out"></i></a>
+                    </div>
+                    {{/userName}}
                   </li>
                 </ul>
               </div>
