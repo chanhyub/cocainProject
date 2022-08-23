@@ -21,4 +21,7 @@ public class IndexController {
     public String register() {
         return "register";
     }
+
+    @GetMapping("/createProject")
+    public String createProject(){return "createProject"; }
 }
