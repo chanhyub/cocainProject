@@ -3434,3 +3434,8 @@ table.projects tr td:first-child {
     width: 100%;
     height: 100%;
 }
+
+.form-floating > .bi-calendar-date + .datepicker_input + label {
+    padding-left: 3.5rem;
+    z-index: 3;
+}
