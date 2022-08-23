@@ -45,4 +45,8 @@ public class IndexController {
         }
         return "createProject";
     }
+    @GetMapping("/projectDetail")
+    public String projectDetail() {
+        return "projectDetail";
+    }
 }
