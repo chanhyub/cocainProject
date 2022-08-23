@@ -24,4 +24,7 @@ public class IndexController {
 
     @GetMapping("/createProject")
     public String createProject(){return "createProject"; }
+
+    @GetMapping("/projectDetail")
+    public String projectDetail(){return "projectDetail"; }
 }
