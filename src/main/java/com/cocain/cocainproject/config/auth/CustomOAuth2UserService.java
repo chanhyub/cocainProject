@@ -29,18 +29,18 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         String registrationId = userRequest
                 .getClientRegistration()
-                .getRegistrationId(); // (1)
+                .getRegistrationId();
         String userNameAttributeName = userRequest
                 .getClientRegistration()
                 .getProviderDetails()
                 .getUserInfoEndpoint()
-                .getUserNameAttributeName(); // (2)
+                .getUserNameAttributeName();
 
         OAuthAttributes attributes = OAuthAttributes
-                .of(registrationId, userNameAttributeName, oAuth2User.getAttributes()); // (3)
+                .of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         TbUser user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user)); // (4)
+        httpSession.setAttribute("user", new SessionUser(user));
 
         return new DefaultOAuth2User(
                 Collections.singleton(
@@ -50,7 +50,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 attributes.getNameAttributeKey()
         );
     }
-    private TbUser saveOrUpdate(OAuthAttributes attributes) { // (5)
+    private TbUser saveOrUpdate(OAuthAttributes attributes) {
         TbUser user = tbUserRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(),
                         attributes.getPicture()))

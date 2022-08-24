@@ -51,25 +51,21 @@
                     <div class="full price_table padding_infor_info">
                         <div class="row">
                             <!-- column contact -->
+                            {{#plist}}
                             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 profile_details margin_bottom_30">
                                 <div class="contact_blog">
-                                    <h4 class="brief">Digital Strategist</h4>
+                                    <h5 class="brief">시작 예정일 : {{startingdate}}</h5>
                                     <div class="contact_inner">
+                                        <h4>{{projecttitle}}</h4>
                                         <div class="left">
-                                            <h3>John Smith</h3>
-                                            <p><strong>About: </strong>Frontend Developer</p>
+                                            <p>기술 스택 : {{techlist}}</p>
                                             <ul class="list-unstyled">
-                                                <li><i class="fa fa-envelope-o"></i> : test@gmail.com</li>
-                                                <li><i class="fa fa-phone"></i> : 987 654 3210</li>
+                                                <li>모집 인원 : {{membernum}}</li>
+                                                <li>진행 방식 : {{process}}</li>
                                             </ul>
                                         </div>
-                                        <div class="right">
-                                            <div class="profile_contacts">
-                                                <img class="img-responsive" src="images/layout_img/msg2.png" alt="#" />
-                                            </div>
-                                        </div>
                                         <div class="bottom_list">
-                                            <div class="left_rating">
+                                           <!-- <div class="left_rating">
                                                 <p class="ratings">
                                                     <a href="#"><span class="fa fa-star"></span></a>
                                                     <a href="#"><span class="fa fa-star"></span></a>
@@ -77,9 +73,9 @@
                                                     <a href="#"><span class="fa fa-star"></span></a>
                                                     <a href="#"><span class="fa fa-star-o"></span></a>
                                                 </p>
-                                            </div>
+                                            </div> -->
                                             <div class="right_button">
-                                                <button type="button" class="btn btn-purple btn-xs" onclick="location.href='/projectDetail'">
+                                                <button type="button" class="btn btn-purple btn-xs" onclick="location.href='/projectDetail/{{id}}'">
                                                     상세 정보
                                                 </button>
                                             </div>
@@ -87,6 +83,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{/plist}}
                             <!-- end column contact blog -->
                         </div>
                     </div>
