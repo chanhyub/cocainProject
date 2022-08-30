@@ -8,25 +8,25 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @RequiredArgsConstructor
-@EnableWebSecurity // (1)
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().headers().frameOptions().disable() // (2)
+        http.csrf().disable().headers().frameOptions().disable()
                 .and()
-                    .authorizeRequests() // (3)
+                    .authorizeRequests()
                     .antMatchers("/","/login","/css/**","/images/**","/js/**","/h2-console/**").permitAll()
-                    //.antMatchers("/api/v1/**").hasRole(Role.USER.name()) // (4)
-                    .anyRequest().authenticated() // (5)
+                    //.antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                    .anyRequest().authenticated()
                 .and()
                     .logout()
-                        .logoutSuccessUrl("/") // (6)
+                        .logoutSuccessUrl("/")
                 .and()
-                    .oauth2Login().loginPage("/login")// (7)
-                        .userInfoEndpoint() // (8)
-                            .userService(customOAuth2UserService); // (9)
+                    .oauth2Login().loginPage("/login")
+                        .userInfoEndpoint()
+                            .userService(customOAuth2UserService);
     }
 }

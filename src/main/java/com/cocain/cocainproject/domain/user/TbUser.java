@@ -25,7 +25,7 @@ public class TbUser {
     @Column
     private String picture;
 
-    @Enumerated(EnumType.STRING) // (1)
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 

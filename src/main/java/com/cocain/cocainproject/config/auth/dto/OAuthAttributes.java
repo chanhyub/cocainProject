@@ -26,7 +26,7 @@ public class OAuthAttributes {
         this.picture = picture;
     }
 
-    // (1)
+
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
         if("naver".equals(registrationId)) {
             return ofNaver("id", attributes);
@@ -58,7 +58,7 @@ public class OAuthAttributes {
                 .build();
     }
 
-    // (2)
+
     public TbUser toEntity() {
         return TbUser.builder()
                 .name(name)

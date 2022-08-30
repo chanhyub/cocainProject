@@ -24,12 +24,12 @@ public class IndexController {
     private final ProjectService projectService;
     @GetMapping("/")
     public String index(Model model, Model model_2) {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user"); // (1)
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         List<TbProject> plist = projectService.findAll();
 
         if(user != null) {
-            // (2)
+
             model.addAttribute("userInfo", user);
         }
         model_2.addAttribute("plist", plist);
@@ -48,20 +48,20 @@ public class IndexController {
 
     @GetMapping("/createProject")
     public String createProject(Model model){
-        SessionUser user = (SessionUser) httpSession.getAttribute("user"); // (1)
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if(user != null) {
-            // (2)
+
             model.addAttribute("userInfo", user);
         }
         return "createProject";
     }
     @GetMapping("/projectDetail/{id}")
     public String projectDetail(Model model,Model model_2 ,@PathVariable("id") Long id) {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user"); // (1)
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         TbProject tbProject = projectService.findById(id);
 
         if(user != null) {
-            // (2)
+
             model.addAttribute("userInfo", user);
         }
         model_2.addAttribute("project", tbProject);
